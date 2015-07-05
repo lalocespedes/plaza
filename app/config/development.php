@@ -2,7 +2,7 @@
 
 return [
 	'app' 	=> [
-		'url'	=> 'http://auth.local',
+		'url'	=> 'http://app.supermatehuala.com',
 		'hash'	=> [
 			'algo'	=> PASSWORD_BCRYPT,
 			'cost'	=> 10
