@@ -16,6 +16,16 @@ $app->get('/', function() use ($app) {
 
 $app->get('/:category', function($category) use($app) {
 
+	$request = $app->request();
+
+	//$users = $app->user->paginate(15);
+
+	$perPage = 1;
+
+	$page = 1;
+
+	$start = ($page*$perPage)-$perPage;
+
 	$category = $app->category->with('products')->where('name', '=', $category)->first();
 
 	//dd($category);
@@ -24,7 +34,7 @@ $app->get('/:category', function($category) use($app) {
 
 	echo "<hr>";
 
-	foreach ($category->products as $key => $product) {
+	foreach ($category->products->take($perPage) as $key => $product) {
 		
 		echo $product->name.'<br>';
 		echo $product->category->name.'<br>';
