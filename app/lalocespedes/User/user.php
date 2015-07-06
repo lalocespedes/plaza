@@ -21,6 +21,10 @@ class User extends Eloquent
 		'remember_token',
 	];
 
+	protected $hidden = [
+		'password'
+	];
+
 	public function getFullName()
 	{
 		if(!$this->first_name || !$this->last_name) {
@@ -57,6 +61,5 @@ class User extends Eloquent
 	{
 		return $this->hasOne('lalocespedes\User\UserPermission', 'user_id');
 	}
-
 
 }

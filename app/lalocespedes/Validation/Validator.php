@@ -5,6 +5,7 @@ namespace lalocespedes\Validation;
 use Violin\Violin;
 
 use lalocespedes\User\User;
+use lalocespedes\Product\Product;
 use lalocespedes\Helpers\Hash;
 
 /**
@@ -18,11 +19,14 @@ class Validator extends Violin
 
 	protected $auth;
 
-	public function __construct(User $user, Hash $hash, $auth = null)
+	protected $product;
+
+	public function __construct(User $user, Hash $hash, $auth = null, Product $product)
 	{
 		$this->user = $user;
 		$this->hash = $hash;
 		$this->auth = $auth;
+		$this->product = $product;
 
 		$this->addFieldMessages([
 			'email' => [
@@ -30,6 +34,9 @@ class Validator extends Violin
 			],
 			'username' => [
 				'uniqueUsername' => 'That username is already in use'
+			],
+			'sku' => [
+				'uniqueSku' => 'That sku is already in use'
 			]
 		]);
 
@@ -57,5 +64,10 @@ class Validator extends Violin
 		}
 
 		return false;
+	}
+
+	public function validate_uniqueSku($value, $input, $args)
+	{
+		return ! (bool) $this->product->where('sku', $value)->count();
 	}
 }

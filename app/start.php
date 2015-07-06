@@ -8,6 +8,8 @@ use Noodlehaus\Config;
 use RandomLib\Factory as Randomlib;
 
 use lalocespedes\User\User;
+use lalocespedes\Product\Product;
+use lalocespedes\Category\Category;
 use lalocespedes\Helpers\Hash;
 use lalocespedes\Validation\Validator;
 use lalocespedes\Mail\Mailer;
@@ -42,6 +44,18 @@ require 'database.php';
 require 'filters.php';
 require 'routes.php';
 
+$app->container->set('user', function() {
+	return new User;
+});
+
+$app->container->set('product', function() {
+	return new Product;
+});
+
+$app->container->set('category', function() {
+	return new Category;
+});
+
 $app->auth = false;
 
 $app->container->singleton('randomlib', function() use($app) {
@@ -54,7 +68,7 @@ $app->container->singleton('hash', function() use($app) {
 });
 
 $app->container->singleton('validation', function() use($app) {
-	return new Validator($app->user, $app->hash, $app->auth);
+	return new Validator($app->user, $app->hash, $app->auth, $app->product);
 });
 
 $app->container->singleton('mail', function() use($app) {
@@ -72,10 +86,6 @@ $app->container->singleton('mail', function() use($app) {
 
 	return new Mailer($app->view, $mailer);
 
-});
-
-$app->container->set('user', function() {
-	return new User;
 });
 
 $view = $app->view();
