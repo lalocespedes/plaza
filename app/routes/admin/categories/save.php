@@ -1,5 +1,13 @@
 <?php
 
+$app->get('/admin/categories/add', function() use($app) {
+
+	$app->render('/admin/categories/add.twig', [
+		'title'	=> 'Agregar Categoria'
+	]);
+
+});
+
 $app->post('/admin/categories/save', $admin(), function() use($app) {
 
 	$request = $app->request();
@@ -28,6 +36,5 @@ $app->post('/admin/categories/save', $admin(), function() use($app) {
 		dd($v->errors());
 
 	}
-
 
 });

@@ -2,15 +2,19 @@
 
 $app->get('/', function() use ($app) {
 
-	echo "Home".'<br>';
+	// echo "Home".'<br>';
 
-	var_dump($_SESSION).'<br>';
+	// var_dump($_SESSION).'<br>';
 
-	if($app->auth) {
+	// if($app->auth) {
 
-		dd($app->auth->username);
+	// 	dd($app->auth->username);
 
-	}
+	// }
+
+	$app->render('/home/home.php', [
+		'title'	=> 'Home'
+	]);
 
 });
 
