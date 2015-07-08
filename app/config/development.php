@@ -2,7 +2,7 @@
 
 return [
 	'app' 	=> [
-		'url'	=> 'http://app.supermatehuala.com',
+		'url'	=> 'http://plaza.local',
 		'hash'	=> [
 			'algo'	=> PASSWORD_BCRYPT,
 			'cost'	=> 10

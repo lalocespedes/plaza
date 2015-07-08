@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f1d100469184d952bae502342cb7cb5a",
+    "hash": "692a67aa3ae75f27d2fa440b20b8b38e",
     "packages": [
         {
             "name": "alexgarrett/violin",
@@ -233,7 +233,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.1.2",
+            "version": "v5.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -318,16 +318,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v5.1.2",
+            "version": "v5.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "b70475a97ce1dff742c971332739ce5de79a512f"
+                "reference": "0aca69fe48c1253451a5fa286082fa99814591b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/b70475a97ce1dff742c971332739ce5de79a512f",
-                "reference": "b70475a97ce1dff742c971332739ce5de79a512f",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/0aca69fe48c1253451a5fa286082fa99814591b6",
+                "reference": "0aca69fe48c1253451a5fa286082fa99814591b6",
                 "shasum": ""
             },
             "require": {
@@ -373,7 +373,7 @@
                 "orm",
                 "sql"
             ],
-            "time": "2015-06-15 07:46:41"
+            "time": "2015-07-03 08:31:13"
         },
         {
             "name": "illuminate/pagination",
@@ -421,16 +421,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.1.2",
+            "version": "v5.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "cf0604a576bb5bf3b36ed5c3a4b52c5464fd49b4"
+                "reference": "9c6e35802e6e7c807170a0ee263d1bfcad6cbab5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/cf0604a576bb5bf3b36ed5c3a4b52c5464fd49b4",
-                "reference": "cf0604a576bb5bf3b36ed5c3a4b52c5464fd49b4",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/9c6e35802e6e7c807170a0ee263d1bfcad6cbab5",
+                "reference": "9c6e35802e6e7c807170a0ee263d1bfcad6cbab5",
                 "shasum": ""
             },
             "require": {
@@ -470,7 +470,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "http://laravel.com",
-            "time": "2015-06-15 07:46:41"
+            "time": "2015-07-02 02:30:30"
         },
         {
             "name": "ircmaxell/random-lib",
@@ -566,6 +566,47 @@
             "description": "A Base Security Library",
             "homepage": "https://github.com/ircmaxell/PHP-SecurityLib",
             "time": "2013-04-30 18:00:34"
+        },
+        {
+            "name": "mike182uk/cart",
+            "version": "v2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mike182uk/cart.git",
+                "reference": "a2d60a05446f4435c504542d287d6ce0ef2dab66"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mike182uk/cart/zipball/a2d60a05446f4435c504542d287d6ce0ef2dab66",
+                "reference": "a2d60a05446f4435c504542d287d6ce0ef2dab66",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "~1.0",
+                "mockery/mockery": "~0.0",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cart\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael David Barrett",
+                    "email": "mike182uk@gmail.com"
+                }
+            ],
+            "description": "A flexible and modern shopping cart package",
+            "time": "2015-04-30 08:31:37"
         },
         {
             "name": "nesbot/carbon",

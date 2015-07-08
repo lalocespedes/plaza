@@ -13,6 +13,7 @@ use lalocespedes\Category\Category;
 use lalocespedes\Helpers\Hash;
 use lalocespedes\Validation\Validator;
 use lalocespedes\Mail\Mailer;
+use lalocespedes\Cart\PlazaCart;
 
 use lalocespedes\Middleware\Beforemiddleware;
 
@@ -57,6 +58,10 @@ $app->container->set('category', function() {
 });
 
 $app->auth = false;
+
+$app->container->set('cart', function() {
+	return new PlazaCart;
+});
 
 $app->container->singleton('randomlib', function() use($app) {
 	$factory = new RandomLib;

@@ -23,6 +23,7 @@
         "alexgarrett/violin": "2.*",
         "ircmaxell/random-lib": "~1.1",
         "symfony/var-dumper": "~2.7",
-        "illuminate/pagination": "^5.1"
+        "illuminate/pagination": "^5.1",
+        "mike182uk/cart": "^2.2"
     }
 }

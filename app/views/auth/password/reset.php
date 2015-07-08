@@ -1,5 +1,3 @@
-
-
 <form action="{{ urlFor('password.reset.post') }}?email={{ email}}&identifier={{ identifier|url_encode }}" method="post" autocomplet="off">
 
 	<div>

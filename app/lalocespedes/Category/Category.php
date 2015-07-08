@@ -3,6 +3,7 @@
 namespace lalocespedes\Category;
 
 use lalocespedes\Product\Product;
+
 use Illuminate\Database\Eloquent\Model as Eloquent;
 /**
 * 

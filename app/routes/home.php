@@ -16,45 +16,65 @@ $app->get('/', function() use ($app) {
 
 $app->get('/:category', function($category) use($app) {
 
-	$request = $app->request();
-
-	//$users = $app->user->paginate(15);
-
-	$perPage = 1;
-
-	$page = 1;
-
-	$start = ($page*$perPage)-$perPage;
-
 	$category = $app->category->with('products')->where('name', '=', $category)->first();
 
-	//dd($category);
 
-	echo $category->name.'<br>';
-
-	echo "<hr>";
-
-	foreach ($category->products->take($perPage) as $key => $product) {
+	if (!$category) {
 		
-		echo $product->name.'<br>';
-		echo $product->category->name.'<br>';
+		echo "No existe cagetory";
+		$app->stop();
 
 	}
 
-	//echoRespnse(200, $categories->products());
+	$count = $category->products->count();
+
+	$response = [
+		'data'	=> $category->toArray(),
+		'total'	=> $count
+	];
+
+	echoRespnse(200, $response);
 
 });
 
 
-$app->get('/:category/:id', function($category, $id) use($app) {
+// $app->get('/:category/:id', function($category, $id) use($app) {
 
-	$category_id =  $app->category->where('name', $category)->first()->id;
+// 	$category_id =  $app->category->where('name', $category)->first()->id;
 
-	$product =$app->product
-				->where('category_id', $category_id)
-				->where('id', $id)
-				->get();
+// 	$product =$app->product
+// 				->where('category_id', $category_id)
+// 				->where('id', $id)
+// 				->get();
 
-	dd($product);
+// 	dd($product);
+
+// });
+
+$app->get('/getProduct/:id', function($id) use($app) {
+
+	$product = $app->product->with('category');
+
+	$product->where("id", $id);
+
+	$data = [ 
+		'product' => $product->firstOrFail()
+	];
+
+	dd($data);
+
+});
+
+$app->get('/getListproducts/:category', function($category) use($app) {
+
+	$products = $app->product->with('category');
+
+	if ($category) {
+    	$products->where("category_id", $category);
+    }
+
+    $data = $products->paginate(1);
+
+	dd($data);
 
 });
