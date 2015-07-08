@@ -1,0 +1,19 @@
+{
+  "name": "plaza",
+  "version": "0.1.0",
+  "homepage": "https://github.com/lalocespedes/plaza",
+  "authors": [
+    "Eduardo Cespedes <lalocespedes@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "foundation": "~5.5.2"
+  }
+}
