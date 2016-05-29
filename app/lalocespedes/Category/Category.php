@@ -4,6 +4,8 @@ namespace lalocespedes\Category;
 
 use lalocespedes\Product\Product;
 
+use Illuminate\Support\Str;
+
 use Illuminate\Database\Eloquent\Model as Eloquent;
 /**
 * 
@@ -15,7 +17,8 @@ class Category extends Eloquent
 
 	protected $fillable = [
 		'name',
-		'description'
+		'description',
+		'slug'
 	];
 
 	protected $attributes = [
@@ -26,6 +29,15 @@ class Category extends Eloquent
 	public function products()
 	{
 		return $this->hasMany('lalocespedes\Product\Product');
+	}
+
+	public function slug($value)
+	{
+		$slug = Str::slug($value);
+
+		$count = Category::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->count();
+
+    	return $count ? "{$slug}-{$count}" : $slug;
 	}
 
 }

@@ -19,8 +19,9 @@ $app->post('/admin/products/save', $admin(), function() use($app) {
 	if($v->passes()) {
 
 		$product = $app->product->create([
-			'sku' => $sku,
-			'name' => $name
+			'sku'	=> $sku,
+			'name'	=> $name,
+			'slug'	=> $app->product->slug($name)
 		]);
 
 	} else {

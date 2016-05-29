@@ -12,34 +12,50 @@ $app->get('/', function() use ($app) {
 
 	// }
 
-	$app->render('/home/home.php', [
-		'title'	=> 'Home'
+	$categories = $app->category->all();
+
+	$app->render('/home/home.twig', [
+		'title'			=> 'Home',
+		'categories'	=> $categories
 	]);
 
-});
+})->name('home');
 
-$app->get('/:category', function($category) use($app) {
 
-	$category = $app->category->with('products')->where('name', '=', $category)->first();
+$app->get('/category/:slug', function($slug) use($app) {
 
+
+	if (!$slug) {
+
+		$app->response->redirect('home');
+	}
+
+	$category = $app->category->with('products')->where('slug', '=', $slug)->first();
 
 	if (!$category) {
-		
-		echo "No existe cagetory";
-		$app->stop();
+
+
+		//flash 'no existe categoria'
+		$app->response->redirect($app->urlFor('home'));
 
 	}
 
 	$count = $category->products->count();
 
-	$response = [
-		'data'	=> $category->toArray(),
-		'total'	=> $count
-	];
+	if ($count == 0) {
+		
+		//flash 'Categoria sin articulos'
+		$app->response->redirect('home');
 
-	echoRespnse(200, $response);
+	}
 
-});
+	$app->render('front/category/category.twig', [
+
+		'category'	=> $category->toArray(),
+		'total'		=> $count
+	]);
+
+})->name('category');
 
 
 // $app->get('/:category/:id', function($category, $id) use($app) {
@@ -55,19 +71,18 @@ $app->get('/:category', function($category) use($app) {
 
 // });
 
-$app->get('/getProduct/:id', function($id) use($app) {
+$app->get('/getProduct/:slug', function($slug) use($app) {
 
 	$product = $app->product->with('category');
 
-	$product->where("id", $id);
+	$product->where("slug", $slug);
 
-	$data = [ 
+	$app->render('/front/product/product.twig', [
+
 		'product' => $product->firstOrFail()
-	];
+	]);
 
-	dd($data);
-
-});
+})->name('getProduct');
 
 $app->get('/getListproducts/:category', function($category) use($app) {
 

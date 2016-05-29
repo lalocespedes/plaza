@@ -1,0 +1,32 @@
+{% extends 'templates/main.twig' %}
+
+{% block title %}
+
+{{ title }}
+
+{% endblock title %}
+
+{% block content %}
+
+		<br>
+		<div class="row">
+					
+				<div class="col-md-7">
+					<div class="product-title">{{ product.name }}</div>
+					<div class="product-desc">{{ product.description }}</div>
+					<div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
+					<hr>
+					<div class="product-price">$ {{ product.price_1 }}</div>
+					<div class="product-stock">In Stock</div>
+					<hr>
+					<form action="{{ urlFor('cart.add', {id: product.id }) }}" method="POST" class="form-inline" role="form">
+							<div class="form-group">
+								<input type="hidden" class="form-control" id="{{ product.id}}">
+							</div>					
+							<button type="submit" class="btn btn-success btn-sm">COMPRAR AHORA</button>
+					</form>
+				</div>
+		</div>
+
+
+{% endblock content %}

@@ -1,6 +1,6 @@
 <?php
 
-$app->get('/admin/categories/add', function() use($app) {
+$app->get('/admin/categories/add', $admin(), function() use($app) {
 
 	$app->render('/admin/categories/add.twig', [
 		'title'	=> 'Agregar Categoria'
@@ -8,7 +8,7 @@ $app->get('/admin/categories/add', function() use($app) {
 
 });
 
-$app->post('/admin/categories/save', $admin(), function() use($app) {
+$app->post('/admin/categories/save', function() use($app) {
 
 	$request = $app->request();
 
@@ -27,8 +27,9 @@ $app->post('/admin/categories/save', $admin(), function() use($app) {
 	if($v->passes()) {
 
 		$category = $app->category->create([
-			'name' => $name,
-			'description' => $description
+			'name' 			=> $name,
+			'description' 	=> $description,
+			'slug'			=> $app->category->slug($name)
 		]);
 
 	} else {

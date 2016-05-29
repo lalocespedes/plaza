@@ -28,3 +28,5 @@ require INC_ROOT . '/app/routes/admin/categories/save.php';
 require INC_ROOT . '/app/routes/cart/cart.php';
 require INC_ROOT . '/app/routes/cart/clear.php';
 require INC_ROOT . '/app/routes/cart/add-item.php';
+require INC_ROOT . '/app/routes/cart/cart_add.php';
+require INC_ROOT . '/app/routes/cart/remove.php';
